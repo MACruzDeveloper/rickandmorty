@@ -1,0 +1,103 @@
+/* Layout styles */
+.bg-color {
+  background-color: var(--color-main);
+}
+
+.main {
+  position: relative;
+  top: 0;
+  z-index: 10;
+}
+
+.main .container {
+  width: 100%;
+  max-width: 128rem;
+  margin: 0 auto;
+}
+
+/* Header styles */
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.header .logo {
+  height: 2rem;
+}
+
+.navbar .active {
+  color: var(--color-main);
+}
+
+/* Episodes styles */
+.episodes .episodes_list>li {
+  border-bottom: 0.1rem solid rgba(255, 255, 255, 0.25);
+}
+
+/* Pagination styles */
+.pagination {
+  margin: 3rem 0;
+}
+
+.pagination ul>li {
+  margin: 0 0.5rem;
+}
+
+.pagination .pagination_btn {
+  width: 2.4rem;
+  height: 2.4rem;
+  background-color: rgba(255, 255, 255, 0.25);
+  color: black;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.pagination .pagination_btn.active {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+/* Carousel characters */
+.carousel {
+  overflow-x: auto;
+}
+
+.carousel>li {
+  text-align: center;
+}
+
+.carousel>li:not(:last-of-type) {
+  margin-right: 1rem;
+}
+
+.carousel>li img {
+  width: 6.8rem;
+  min-width: 6.8rem;
+  height: 6.8rem;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+
+/* Form */
+.form .form_control {
+  display: block;
+  width: 100%;
+  min-height: 3.8rem;
+  background-color: white;
+  border-radius: 0.25rem;
+  font-size: 1.4rem;
+  color: black;
+  padding: 0.5rem 1rem;
+}
+
+.form .btn {
+  display: block;
+  width: 100%;
+  padding: 0.8rem 2.4rem;
+  border-radius: 0.25rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
