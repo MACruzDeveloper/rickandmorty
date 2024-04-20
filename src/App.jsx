@@ -1,14 +1,19 @@
+import { createContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
 import Header from './components/common/Header'
 import ListEpisodes from './components/ListEpisodes'
 import Episode from './components/Episode'
-import './App.css'
+import './assets/styles.css'
+
+// export fake user logged as context
+export const myContext = createContext('default')
 
 function App() {
+  const userLogged = 'Miguel'
 
   return (
-    <>
+    <myContext.Provider value={userLogged}>
       <Header />
 
       <main className="main">
@@ -21,7 +26,7 @@ function App() {
           </Routes>
         </div>
       </main>
-    </>
+    </myContext.Provider>
   )
 }
 

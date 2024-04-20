@@ -1,21 +1,23 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { useParams, NavLink } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchAllCharacters } from '../../store/characterSlice'
+//import { useDispatch, useSelector } from 'react-redux'
+//import { fetchAllCharacters } from '../store/characterSlice'
+import { myContext } from '../App'
+import Carousel from './Carousel'
 import FormComments from './FormComments'
 
 const Episode = () => {
+  const userFromContext = useContext(myContext)
   const [charactersFiltered, setCharactersFiltered] = useState([])
   const [isLoadingData, setIsLoadingData] = useState(false)
+  const [numCharacters, setNumCharacters] = useState(0)
 
   // get all characters from store
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(fetchAllCharacters())
-  }, [dispatch])
-
-  const { characters } = useSelector((state) => state.characters)
+  //const dispatch = useDispatch()
+  //useEffect(() => {
+    //dispatch(fetchAllCharacters())
+  //}, [dispatch])
+  //const { characters } = useSelector((state) => state.characters)
 
   // get episode data using url param from episodes list
   const { epi } = useParams()
@@ -31,6 +33,7 @@ const Episode = () => {
         )
         const data = await response.json()
         setDataEpisode(data)
+        setNumCharacters(data.characters.length)
         fetchImagesFromCharacters(data.characters)
       } catch (error) {
         console.error("Error:", error)
@@ -62,7 +65,8 @@ const Episode = () => {
 
   return <section className="episode">
     <div className="container py-4">
-      <nav className="back flex justify-end px-8 mb-4">
+      <nav className="back flex justify-between items-center px-8 mb-12">
+        <p className="text-2xl">Hi {userFromContext}!</p>
         <NavLink to="/episodes" className="text-2xl font-bold">« Back</NavLink>
       </nav>
 
@@ -72,21 +76,11 @@ const Episode = () => {
         <p className="text-2xl mt-2">{dataEpisode.air_date}</p>
       </div>
 
-      <div className="carousel pl-8">
-        <h2 className="text-3xl mb-6">Characters</h2>
-
-        <ul className="carousel flex pb-4">
-          {
-            !isLoadingData ?
-              charactersFiltered?.map((ele) => {
-                return <li key={ele.id}>
-                  <img src={ele.image} alt={ele.name} />
-                  <span>{ele.name}</span>
-                </li>
-              }) : <p>loading...</p>
-          }
-        </ul>
-      </div>
+      <Carousel
+        isLoadingData={isLoadingData}
+        numCharacters={numCharacters}
+        charactersFiltered={charactersFiltered}
+      />
 
       <div className="form px-8 my-8">
         <h2 className="text-3xl mb-6">Comments</h2>

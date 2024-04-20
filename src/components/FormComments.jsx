@@ -52,7 +52,7 @@ const FormComments = () => {
             id="name"
             name="name"
             className="form_control"
-            placeholder="Escribe tu nombre"
+            placeholder="Write your name"
           />
           <ErrorMessage name="name">
             {msg => <span className="error">{msg}</span>}
@@ -65,7 +65,7 @@ const FormComments = () => {
             id="email"
             name="email"
             className="form_control"
-            placeholder="Escribe tu email"
+            placeholder="Write your email"
           />
           <ErrorMessage name="email">
             {msg => <span className="error">{msg}</span>}
@@ -80,7 +80,7 @@ const FormComments = () => {
             className="form_control"
             maxLength="500"
             rows="4"
-            placeholder="Escribe tu comentario (max. 500 caracteres)"
+            placeholder="Write your comment (max. 500 characters)"
           />
           <ErrorMessage name="comment">
             {msg => <span className="error">{msg}</span>}
@@ -92,7 +92,7 @@ const FormComments = () => {
           disabled={isSubmitting}
           className="btn bg-color"
         >
-          Enviar
+          Send
         </button>
       </Form>
     )}
